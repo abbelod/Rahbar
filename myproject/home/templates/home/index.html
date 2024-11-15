@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Management - Home</title>
+  {% load static %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+ 
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">Rahbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'tourlist' %}">Tours</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Hotels</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Transportation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="container">
+      <h1>Welcome to Rahbar</h1>
+      <p>Your one-stop destination for booking amazing tours, hotels, and transportation.</p>
+      <a href="{% url 'tourlist' %}" class="btn btn-primary btn-lg">Explore Tours</a>
+    </div>
+  </div>
+
+  <!-- Popular Tours Section -->
+  <div class="container my-5">
+    <div class="container">
+        <h1>Welcome to Rahbar</h1>
+        <p>Your one-stop destination for booking amazing tours, hotels, transportation, and more.</p>
+      </div>
+      
+      
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <!-- Tours Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-img">
+                    <img src="{% static 'images/tours.jpg' %}" alt="Tours Image">
+                </div>
+                <div class="card-heading">
+                    <h2>Tours</h2>
+                </div>
+                <div class="card-text">
+                    Explore unforgettable tours tailored for all types of adventurers.
+                </div>
+                <div class="card-btn">
+                    <button onclick="window.location.href='{% url 'home' %}'">Explore Tours</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transport Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-img">
+                    <img src="{% static 'images/bus.jpg' %}" alt="Transport Image">
+                </div>
+                <div class="card-heading">
+                    <h2>Transport</h2>
+                </div>
+                <div class="card-text">
+                    Discover reliable transport options to suit your travel needs.
+                </div>
+                <div class="card-btn">
+                    <button onclick="window.location.href='{% url 'home' %}'">Book Transport</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Planes Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-img">
+                    <img src="{% static 'images/flight.jpg' %}" alt="Planes Image">
+                </div>
+                <div class="card-heading">
+                    <h2>Flights</h2>
+                </div>
+                <div class="card-text">
+                    Book national and international flights with ease and comfort.
+                </div>
+                <div class="card-btn">
+                    <button onclick="window.location.href='{% url 'home' %}'">Book Flights</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Blogs Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-img">
+                    <img src="{% static 'images/blog.jpg' %}" alt="Blogs Image">
+                </div>
+                <div class="card-heading">
+                    <h2>Blogs</h2>
+                </div>
+                <div class="card-text">
+                    Stay informed with travel tips, guides, and the latest trends.
+                </div>
+                <div class="card-btn">
+                    <button onclick="window.location.href='{% url 'home' %}'">Read Blogs</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- RahbarAI Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-img">
+                    <img src="{% static 'images/bot.jpg' %}" alt="RahbarAI Image">
+                </div>
+                <div class="card-heading">
+                    <h2>RahbarAI</h2>
+                </div>
+                <div class="card-text">
+                    Get guidance from our intelligent chatbot for seamless travels.
+                </div>
+                <div class="card-btn">
+                    <button onclick="window.location.href='{% url 'home' %}'">Meet RahbarAI</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotels Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-img">
+                    <img src="{% static 'images/hotel.jpg' %}" alt="Hotels Image">
+                </div>
+                <div class="card-heading">
+                    <h2>Hotels</h2>
+                </div>
+                <div class="card-text">
+                    Find and book top-rated hotels for your stay.
+                </div>
+                <div class="card-btn">
+                    <button onclick="window.location.href='{% url 'home' %}'">Book Hotels</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- Features Section -->
+  <div class="features-section">
+    <div class="container">
+      <h2 class="text-center mb-4">Why Choose Us?</h2>
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <i class="fas fa-plane fa-3x mb-3"></i>
+          <h5>Easy Booking</h5>
+          <p>Book tours, hotels, and transportation easily from one platform.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <i class="fas fa-star fa-3x mb-3"></i>
+          <h5>Best Destinations</h5>
+          <p>We offer top-rated destinations curated just for you.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <i class="fas fa-users fa-3x mb-3"></i>
+          <h5>Customer Support</h5>
+          <p>Our team is here to help you with all your booking needs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action Section -->
+  <div class="cta-section text-center">
+    <div class="container">
+      <h2>Ready to Start Your Adventure?</h2>
+      <p>Sign up today and begin exploring the world with us.</p>
+      <a href="{% url 'home' %}" class="btn btn-light btn-lg">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4">
+    <div class="container text-center">
+      <p>&copy; {{ current_year }} Tour Management. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap and FontAwesome JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

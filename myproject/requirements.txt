@@ -1,0 +1,5 @@
+1. create update delete tour package
+1. create update delete transport package
+1. create update delete hotel package
+4. talk to chat bot
+5. write a blog and view blog

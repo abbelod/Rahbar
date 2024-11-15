@@ -1,0 +1,352 @@
+/* style.css */
+body{
+    background-color: #fffcfc;
+}
+
+    
+
+.hero-section {
+    background: url('../images/tourbanner.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+}
+
+.features-section {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+}
+
+.cta-section {
+    background-color: #007bff;
+    color: white;
+    padding: 50px 0;
+}
+
+.service-card-1 {
+    /* margin-left: 15px; */
+    /* flex: 0 0 auto; */
+    /* width: 30%; */
+    padding: 10px;
+    background:  url(../images/bus.jpg);
+    /* height: 250px; */
+    /* width: 200px; */
+    height: 270px;
+}
+
+.service-card-2 {
+
+    padding: 10px;
+    background:  url(../images/bot.jpg);
+
+    height: 270px;
+}
+
+.service-card-3 {
+
+    padding: 10px;
+    background:  url(../images/tours.jpg);
+    height: 270px;
+}
+.service-card-4 {
+
+    padding: 10px;
+    background:  url(../images/blog.jpg);
+    height: 270px;
+}
+.service-card-5 {
+
+    padding: 10px;
+    background:  url(../images/hotel.jpg);
+    height: 270px;
+}
+.service-card-6 {
+
+    padding: 10px;
+    background:  url(../images/flight.jpg);
+    height: 270px;
+}
+
+.service-col-heading{
+
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.8em;
+    line-height: 1.1;
+    color: #1A1A1D
+    
+  }
+  
+  .service-col-text{
+    text-align: center;
+    max-width: 17em;
+    margin-top: 10px;
+    margin-left: 3%;
+    font-family: "Poppins", sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #3B1C32;
+    /* color: #FF6969; */
+    
+  
+  }
+  .card-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+  }
+
+  .card-text{
+    text-align: center;
+    color: #3C3D37;
+    margin: 5px;
+    height: 65px;
+  }
+
+  .card-heading{
+    text-align: center;
+    color: #181C14;
+
+  }
+
+  .card-img img{
+    max-width: 300px;
+    max-height: 250px;
+
+  }
+
+  .card-img{
+    text-align: center;
+    background-color: bisque;
+  }
+
+
+  .product-img img{
+    max-height: 250px;
+  }
+
+  form{
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px;
+    padding: 20px;
+    background-color: #F3F4F6;
+  }
+
+  label{
+    font-weight: bold;
+  }
+
+  input,
+  textarea{
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+  }
+
+  .sidebar {
+    background-color: #f8f9fa;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    overflow-y: auto;
+  }
+  .content {
+    margin-left: 270px; /* Offset for the sidebar */
+    padding: 20px;
+  }
+
+input{
+  margin: 4px;
+}
+
+
+  
+.aleo-mytexts {
+  font-family: "Aleo", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  }
+  .poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  
+  /* CSS */
+  .button-4 {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+  }
+  
+  .button-4:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+  }
+  
+  .button-4:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+  }
+  
+  .button-4:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+  }
+  
+  .button-4:focus {
+    outline: 1px transparent;
+  }
+  
+  .button-4:before {
+    display: none;
+  }
+  
+  .button-4:-webkit-details-marker {
+    display: none;
+  }
