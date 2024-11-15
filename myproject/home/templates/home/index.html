@@ -40,9 +40,14 @@
             <a class="nav-link" href="{% url 'home' %}">Hello, {{ user.username }}</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'listings' %}">Manage Listings</a>
+          </li>
+          <li class="nav-item">
             <form action={% url 'logout' %} method="post">
               {% csrf_token %}
-              <input type="submit" value="logout">
+              <div class="logout-button">
+                <input type="submit" value="logout">
+              </div>
           </form>
           </li>
           {% endif %}

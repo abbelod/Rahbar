@@ -4,22 +4,31 @@ from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.mixins import login_requiredMixin
 from django.views import View
 from django.contrib.auth.models import User
-from .forms import RegisterForm
+from .forms import RegisterForm, ProfileForm
+from TourPackages.models import Tour
+
 
 
 # Create your views here.
 def register_view(request):
     if request.method =='POST':
         form = RegisterForm(request.POST)
-        if form.is_valid():
+        profile_form = ProfileForm(request.POST)
+        if form.is_valid() and profile_form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = User.objects.create_user(username=username, password=password)
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
             login(request, user)
             return redirect('home')
     else:
         form = RegisterForm()
-    return render(request, 'account/signup.html', {"form": form})
+        profile_form = ProfileForm()
+
+    context={"form":form , "profile_form":profile_form}
+    return render(request, 'account/signup.html', context)
 
 
 def login_view(request):
@@ -51,3 +60,14 @@ def logout_view(request):
 @login_required
 def user_dashboard_view(request):
     return render(request, 'account/userdashboard.html')
+
+@login_required
+def listings(request):
+    tours = Tour.objects.all()
+    print(tours)
+    return render (request, 'account/listings.html', {"tours":tours})
+
+@login_required
+def createlistings_view(request):
+    return render (request, 'account/createlistings.html')
+

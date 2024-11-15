@@ -1,9 +1,9 @@
 /* style.css */
 body{
-    background-color: #fffcfc;
+    background-color: #009579;
+    font-family: "Poppins", sans-serif;
 }
 
-    
 
 .hero-section {
     background: url('../images/tourbanner.jpg') no-repeat center center;
@@ -133,6 +133,7 @@ body{
     max-height: 250px;
   }
 
+  .create-listing
   form{
     max-width: 400px;
     margin: 0 auto;
@@ -147,6 +148,7 @@ body{
     font-weight: bold;
   }
 
+  .create-listing
   input,
   textarea{
     width: 100%;
@@ -174,7 +176,174 @@ body{
 
 input{
   margin: 4px;
+  border: 0;
+outline: 0;
+cursor: pointer;
+color: rgb(60, 66, 87);
+background-color: rgb(255, 255, 255);
+box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(60 66 87 / 16%) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+border-radius: 4px;
+font-size: 14px;
+font-weight: 500;
+padding: 4px 8px;
+display: inline-block;
+min-height: 28px;
+transition: background-color .24s,box-shadow .24s;
+:hover {
+    box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(60 66 87 / 16%) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(60 66 87 / 8%) 0px 3px 9px 0px, rgb(60 66 87 / 8%) 0px 2px 5px 0px;
 }
+}
+
+.logout-button input{
+  border: none;
+  
+}
+
+
+.green-bg{
+  background-color: #009579;
+}
+
+/* General styles for the section */
+.listing-section {
+  padding: 20px;
+  background-color: #f9f9f9; /* Light gray background for the section */
+}
+
+/* Styles for the row */
+.listing-section .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Add space between cards */
+  justify-content: center; /* Center the cards */
+}
+
+/* Styles for each listing card */
+.listing-card {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #e0e0e0; /* Light border for the card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden; /* Ensure no overflow for content */
+  max-width: 300px; /* Limit card width */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+}
+
+.listing-card:hover {
+  transform: translateY(-5px); /* Lift the card slightly on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Styles for the listing image */
+.listing-img {
+  background-color: #d9d9d9; /* Placeholder background for image */
+  height: 180px; /* Fixed height for image area */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listing-img img {
+  max-width: 100%; /* Ensure image fits within the container */
+  height: auto; /* Maintain aspect ratio */
+  border-bottom: 1px solid #e0e0e0; /* Border separating image from text */
+}
+
+/* Styles for the listing title */
+.listing-title {
+  padding: 15px;
+  font-size: 1.2rem; /* Slightly larger font for title */
+  font-weight: bold;
+  color: #333333; /* Dark gray text */
+  text-align: center;
+}
+
+/* Styles for the listing description */
+.listing-desc {
+  padding: 0 15px 15px;
+  font-size: 0.9rem; /* Slightly smaller font for description */
+  color: #666666; /* Medium gray text */
+  text-align: justify; /* Align text for better readability */
+}
+
+.no-listing {
+color: #9defe0;
+}
+
+.btn-create {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #9bffe9;
+  background-color: #005ea1; /* Primary blue color */
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-create:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05);    /* Slight zoom effect */
+}
+
+.btn-create:active {
+  background-color: #004085; /* Even darker on click */
+  transform: scale(0.95);    /* Slight shrink effect */
+}
+
+.box{
+  margin: 5px;
+  border: 2px solid #b1cfc1;
+  border-radius: 10px;
+  height: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for better visuals */
+  transition: transform 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease; /* Smooth transition with longer duration */
+}
+.img-1{
+  background-image:
+  linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(0, 0, 0, 0.668)),
+  url('../images/blog.jpg');
+}
+.img-2{
+  background-image:
+  linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(0, 0, 0, 0.697)),
+  url('../images/bot.jpg');
+}
+.img-3{
+  background-image:
+  linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgb(0 0 0 / 66%)), url(../images/bus.jpg);
+}
+.img-4{
+  background-image:
+  linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(0, 0, 0, 0.662)),
+  url('../images/flight.jpg');
+}
+.img-5{
+  background-image:
+  linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(0, 0, 0, 0.651)),
+  url('../images/hotel.jpg');
+}
+.img-6{
+  background-image:
+  linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(0, 0, 0, 0.67)),
+  url('../images/tours.jpg');
+}
+
+.box:hover {
+  background-color: #007bff; /* Change background color */
+  color: #fff; /* Change text color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  transform: scale(1.05); /* Slightly enlarge */
+  cursor: pointer; /* Show pointer cursor */
+}
+.box-section{
+  width: 100%;
+  font-size: 3rem;
+  color: #ddffde;
+}
+
 
 
   
