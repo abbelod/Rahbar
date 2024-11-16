@@ -128,10 +128,22 @@ body{
     background-color: bisque;
   }
 
+  .bg-product-card{
+    background-color: #F4F6FF;
+  }
 
   .product-img img{
-    max-height: 250px;
+    max-width: 300px;
+    height: 250px;
+    border-top-left-radius: 3%;
+    border-bottom-left-radius: 3%;
+    float: left;
   }
+
+.product-detail li{
+  margin: 5px;
+  
+}
 
   .create-listing
   form{
@@ -158,6 +170,13 @@ body{
     box-sizing: border-box;
     border: 1px solid #ddd;
   }
+
+  .create-listing-title{
+    color: #BDE8CA;
+    font-size: 4em;
+    
+  }
+
 
   .sidebar {
     background-color: #f8f9fa;
@@ -345,6 +364,19 @@ color: #9defe0;
 }
 
 
+a{
+  text-decoration: none;
+  color: #ddffde;
+
+}
+
+.card-price{
+  font-size: 2rem;
+}
+
+.light-blue{
+  color: #007bff;
+}
 
   
 .aleo-mytexts {
@@ -460,6 +492,8 @@ color: #9defe0;
     font-weight: 900;
     font-style: italic;
   }
+
+  
 
   
   /* CSS */

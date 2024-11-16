@@ -10,19 +10,20 @@ from .forms import  TourForm
 
 def tourlist(request):
     tours = Tour.objects.all()
-    print(tours)
     context = {'tours':tours}
     return render(request, 'tours/tourlist.html', context)
 
 @login_required
 def tourForm(request):
     if request.method == "POST":
-        form = TourForm(request.POST)
+        form = TourForm(request.POST, request.FILES)
+        print(request.FILES)
         if form.is_valid():
             form.created_by = request.user
             form.save()
             return redirect(tourlist)
-    
+        else:
+            print('invalid form')
     else:
         form = TourForm()
     return render(request, "tours/tourform.html", {"form": form})
