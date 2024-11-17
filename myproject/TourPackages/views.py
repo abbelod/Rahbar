@@ -54,3 +54,7 @@ def usertours_view(request):
     context = {'tours':tours}
     return render(request, 'tours/usertours.html', context)
 
+def tourdetail_view(request, id):
+    tours = Tour.objects.filter(id = id)
+    context = {'tours':tours}
+    return render(request, 'tours/tourdetail.html', context)
