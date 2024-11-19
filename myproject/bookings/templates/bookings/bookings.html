@@ -45,7 +45,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
+            <a class="nav-link" href="{% url 'tourlist' %}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'tourlist' %}">Tours</a>
@@ -63,7 +63,7 @@
     <h5>Navigation</h5>
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
+        <a class="nav-link" href="{% url 'tourlist' %}">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'tourlist' %}">Tour Listings</a>
@@ -86,40 +86,48 @@
   <!-- Main Content Area -->
   <div class="content">
     <div class="container my-5">
-      <h1 class="text-center mb-4 create-listing-title">Available Tours</h1>
+      <h1 class="text-center mb-4 create-listing-title">My Bookings</h1>
 
       <!-- Tour Listing Cards -->
       <div class="container">
-        {% for tour in tours %}
+        {% for booking in bookings %}
         <div class="row mt-5 ">
           <div class="product-card">
 
             <div class="col-3  bg-product-card px-0 rounded-start">
-              <a href="{% url 'tourdetail' tour.id %}">
-
                 <div class="product-img">
-                  <img src="{{ tour.image.url }}" class="card-img-top" alt="Tour Image">
+                  <img src="{{ booking.listing.image.url }}" class="card-img-top" alt="Tour Image">
                 </div>
-              </a>
-  
             </div>
             <div class="col-5  bg-product-card rounded-end">
-              <a href="{% url 'tourdetail' tour.id %}">
 
                 <div class="product-detail poppins-medium py-2">
-                  <h5 class="card-title poppins-extrabold mt-3">{{ tour.name }}</h5>
-                  <p class="mt-3 mb-0">{{ tour.origin_country }} to {{ tour.destination_country }}</p>
-                  <p class="mt-0 mb-0"> {{ tour.number_of_nights }} Days</p>
-                  <p class="light-blue mt-2">{{ tour.available_bookings }} seats left</p>
-                  <p class="mt-1 text-end mx-5 card-price poppins-bold">Rs {{ tour.price }}</p>
-                </a>
+                  <h5 class="card-title poppins-extrabold mt-3">{{ booking.listing.name }}</h5>
+                  <h5 class="poppins-bold mt-3">Booked on: {{ booking.booking_date }}</h5>
+                  <h5 class="mt-1  poppins-bold">Rs {{ booking.amount }}</h5>
+                  <h5 class="mt-1  poppins-bold">Quantity: {{ booking.quantity}}</h5>
+                  <h5 class="mt-1  poppins-bold">Status: {{ booking.status}}</h5>
+              </div>
+              <div class="">
+                {% if booking.status != 'Cancelled' %}
+                <form action="{% url 'cancelbooking' booking.id %}" method="post">
+                  {% csrf_token %}
+
+                  <button  type="submit" class="btn border">
+                    Cancel
+                  </button>
+
+                </form>
+                {% endif %}
+                <button class="btn border">
+                  View Detail
+                </button>
               </div>
   
             </div>
           </div>
           
         </div>
-
         {% endfor %}
       </div>
 

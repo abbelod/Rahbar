@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'TourPackages.apps.TourpackagesConfig',
     'home',
-    'accounts'
+    'accounts',
+    'bookings',
     
 ]
 

@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Tour 
 from django.contrib.auth.models import User
+from bookings.models import Booking
+from django.contrib.contenttypes.models import ContentType
 
 from .forms import  TourForm
 
@@ -54,7 +56,23 @@ def usertours_view(request):
     context = {'tours':tours}
     return render(request, 'tours/usertours.html', context)
 
+@login_required
 def tourdetail_view(request, id):
+    if request.method == 'POST':
+        tour = Tour.objects.get(id = id)
+        quantity = int(request.POST.get('quantity'))
+        booking = Booking.objects.create(
+            user = request.user,
+            content_type=ContentType.objects.get_for_model(tour),
+            object_id=tour.id,
+            status='confirmed',
+            quantity = quantity,
+            amount = tour.price * quantity
+        )
+        tour.available_bookings = tour.available_bookings - quantity
+        tour.save()
+        return redirect('home')
+
     tours = Tour.objects.filter(id = id)
     context = {'tours':tours}
     return render(request, 'tours/tourdetail.html', context)

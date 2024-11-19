@@ -111,7 +111,8 @@
               </div>
                 <div class="px-5">
                     <form action="{% url 'tourdetail' tour.id %}" method="post">
-                    <input type="number" class="quantity-input" min="1" max="{{ tour.available_bookings }}">
+                      {% csrf_token %}
+                    <input type="number" class="quantity-input" min="1" max="{{ tour.available_bookings }}" name = "quantity">
                     <button type="submit" class="button-3">Book Now!</button>
                 </form>
                 </div>              

@@ -6,6 +6,7 @@ from django.views import View
 from django.contrib.auth.models import User
 from .forms import RegisterForm, ProfileForm
 from TourPackages.models import Tour
+from bookings.models import Booking
 
 
 
@@ -63,7 +64,8 @@ def user_dashboard_view(request):
 
 @login_required
 def listings(request):
-    tours = Tour.objects.all()
+    tours = request.user.tours.all()
+    
     print(tours)
     return render (request, 'account/listings.html', {"tours":tours})
 
@@ -71,3 +73,8 @@ def listings(request):
 def createlistings_view(request):
     return render (request, 'account/createlistings.html')
 
+@login_required
+def bookings_view(request):
+    bookings = request.user.bookings.all()
+    print(bookings)
+    return render(request, 'account/bookings.html', {"bookings": bookings})

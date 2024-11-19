@@ -58,11 +58,19 @@
         </div>
 
     </nav>
+    <div class="container d-flexalign-items-center" >
+        <div class="no-listing justify-content-center align-items-center text-center">
+            <a href="{% url 'createlistings' %}" class="btn-create mt-4">
+                Create a Listing
+            </a>
+
+        </div>
+    </div>
     {% if tours %}
-    {% for tour in tours %}
-    <div class="container">
-        <div class="listing-section">
+    <div class="container mt-5">
+        <div class="listing-section rounded">
             <div class="row">
+                {% for tour in tours %}
                 <!-- Listing Card 1 -->
                 <div class="listing-card">
                     <div class="listing-img">
@@ -71,7 +79,7 @@
 
                     </div>
                     <div class="listing-title">
-                        <h3>Listing Title {{ tour.name }}</h3>
+                        <h3>{{ tour.name }}</h3>
                     </div>
                     <div class="listing-desc">
                         <p>
@@ -79,14 +87,14 @@
                             important details.
                         </p>
                     </div>
-                    <div class="listing-actions">
+                    <div class="listing-actions mb-1">
                         <a href="#" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-    {% endfor %}
 
     {% else %}
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
