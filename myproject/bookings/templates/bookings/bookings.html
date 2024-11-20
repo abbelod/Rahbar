@@ -59,7 +59,7 @@
   </nav>
 
   <!-- Sidebar for navigation -->
-  <div class="sidebar">
+  {% comment %} <div class="sidebar">
     <h5>Navigation</h5>
     <ul class="nav flex-column">
       <li class="nav-item">
@@ -81,18 +81,17 @@
         <a class="nav-link" href="{% url 'tourlist' %}">Contact</a>
       </li>
     </ul>
-  </div>
+  </div> {% endcomment %}
 
   <!-- Main Content Area -->
-  <div class="content">
     <div class="container my-5">
-      <h1 class="text-center mb-4 create-listing-title">My Bookings</h1>
+      <h1 class="text-center mb-4 create-listing-title poppins-bold">My Bookings</h1>
 
       <!-- Tour Listing Cards -->
       <div class="container">
         {% for booking in bookings %}
         <div class="row mt-5 ">
-          <div class="product-card">
+          <div class="product-card justify-content-center">
 
             <div class="col-3  bg-product-card px-0 rounded-start">
                 <div class="product-img">
@@ -103,26 +102,35 @@
 
                 <div class="product-detail poppins-medium py-2">
                   <h5 class="card-title poppins-extrabold mt-3">{{ booking.listing.name }}</h5>
-                  <h5 class="poppins-bold mt-3">Booked on: {{ booking.booking_date }}</h5>
-                  <h5 class="mt-1  poppins-bold">Rs {{ booking.amount }}</h5>
-                  <h5 class="mt-1  poppins-bold">Quantity: {{ booking.quantity}}</h5>
-                  <h5 class="mt-1  poppins-bold">Status: {{ booking.status}}</h5>
+                  <h5 class="poppins-semibold mt-3">Booked on: {{ booking.booking_date }}</h5>
+                  <h5 class="mt-1  poppins-semibold">Rs {{ booking.amount }}</h5>
+                  <h5 class="mt-1  poppins-semibold">Quantity: {{ booking.quantity}}</h5>
+                  <h5 class="mt-1  poppins-semibold">Status: {{ booking.status}}</h5>
               </div>
-              <div class="">
+              <div class="row">
+                <div class="col-3">
+                
+                  <button class="btn border hover-effect-2">
+                    View Detail
+                  </button>
+                </div>
+              <div class="col-3">
                 {% if booking.status != 'Cancelled' %}
                 <form action="{% url 'cancelbooking' booking.id %}" method="post">
                   {% csrf_token %}
 
-                  <button  type="submit" class="btn border">
+                  <button  type="submit" class="btn border hover-effect-2">
                     Cancel
                   </button>
 
                 </form>
                 {% endif %}
-                <button class="btn border">
-                  View Detail
-                </button>
+                
               </div>
+             
+            </div>
+
+
   
             </div>
           </div>
@@ -132,7 +140,6 @@
       </div>
 
     </div>
-  </div>
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

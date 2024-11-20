@@ -22,4 +22,4 @@ def cancelbooking_view(request, id):
         listing.available_bookings = listing.available_bookings + booking.quantity
         listing.save()
         booking.save()
-        return redirect('home')
+        return redirect('bookings')

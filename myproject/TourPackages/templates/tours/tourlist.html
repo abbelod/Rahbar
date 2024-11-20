@@ -59,7 +59,7 @@
   </nav>
 
   <!-- Sidebar for navigation -->
-  <div class="sidebar">
+  {% comment %} <div class="sidebar">
     <h5>Navigation</h5>
     <ul class="nav flex-column">
       <li class="nav-item">
@@ -81,18 +81,17 @@
         <a class="nav-link" href="{% url 'tourlist' %}">Contact</a>
       </li>
     </ul>
-  </div>
+  </div> {% endcomment %}
 
   <!-- Main Content Area -->
-  <div class="content">
     <div class="container my-5">
-      <h1 class="text-center mb-4 create-listing-title">Available Tours</h1>
+      <h1 class="text-center mb-4 create-listing-title poppins-bold">Available Tours</h1>
 
       <!-- Tour Listing Cards -->
       <div class="container">
         {% for tour in tours %}
         <div class="row mt-5 ">
-          <div class="product-card">
+          <div class="product-card justify-content-center">
 
             <div class="col-3  bg-product-card px-0 rounded-start">
               <a href="{% url 'tourdetail' tour.id %}">
@@ -124,7 +123,6 @@
       </div>
 
     </div>
-  </div>
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

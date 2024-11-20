@@ -67,9 +67,11 @@
         </div>
     </div>
     {% if tours %}
+    <h1 class="text-center mb-4 mt-4 create-listing-title poppins-bold">Tours</h1>
     <div class="container mt-5">
         <div class="listing-section rounded">
-            <div class="row">
+            {% comment %} <div class="row">
+                
                 {% for tour in tours %}
                 <!-- Listing Card 1 -->
                 <div class="listing-card">
@@ -92,10 +94,24 @@
                     </div>
                 </div>
                 {% endfor %}
+            </div> {% endcomment %}
+            <div class="row">
+                
+                {% for tour in tours %}
+                <!-- Listing Card 1 -->
+                <div class="card listing-card" style="width: 18rem;">
+                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">{{  tour.name}}  </h5>
+                      <a href="{% url 'tourdetail' tour.id %}" class="btn btn-primary btn-sm">Detail</a>
+                      <a href="{% url 'updatetour' tour.id %}" class="btn btn-primary btn-sm">Update</a>
+                      <a href="{% url 'deletetour' tour.id %}" class="btn btn-primary btn-sm">Delete</a>
+                    </div>
+                  </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
     {% else %}
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="no-listing justify-content-center align-items-center text-center">

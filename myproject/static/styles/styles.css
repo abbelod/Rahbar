@@ -1,4 +1,8 @@
 /* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 body {
   background-color: #009579;
   font-family: "Poppins", sans-serif;
@@ -11,10 +15,12 @@ body {
   color: white;
   padding: 100px 0;
   text-align: center;
+  /* height: 817px; */
+  height: 95vh;
 }
 
 .hero-section h1 {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .features-section {
@@ -26,6 +32,10 @@ body {
   background-color: #007bff;
   color: white;
   padding: 50px 0;
+}
+
+.services-card{
+  height: 473;
 }
 
 .service-card-1 {
@@ -105,6 +115,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 5px;
+
 }
 
 .card-text {
@@ -121,10 +132,38 @@ body {
 }
 
 .card-img img {
-  max-width: 300px;
-  max-height: 250px;
+  width: 350px;
+  height: 300px;
+  max-width: 100%;
 
 }
+
+.hover-effect-1 {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease, color 0.5s ease; /* Smooth animation */
+  background-color: lightblue; /* Initial background color */
+  color: black; /* Initial text color */
+  /*transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for both */
+}
+
+.hover-effect-1:hover {
+  transform: scale(1.05); /* Slightly enlarge */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  background-color: steelblue; /* Hover background color */
+  color: white; /* Hover text color */
+}
+
+.hover-effect-2{
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease, color 0.5s ease; /* Smooth animation */
+  background-color: #009579; /* Initial background color */
+
+}
+.hover-effect-2:hover {
+  transform: scale(1.05); /* Slightly enlarge */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  background-color: steelblue; /* Hover background color */
+  color: white; /* Hover text color */
+}
+
 
 .card-img {
   text-align: center;
@@ -135,6 +174,13 @@ body {
   background-color: #F4F6FF;
 }
 
+.bg-navbar{
+background-color: #aad6ec !important;
+}
+
+.bg-color-1{
+background-color: #b0e2ff;
+}
 
 .product-card {
   display: flex;
@@ -318,6 +364,7 @@ input {
 
 .logout-button input {
   border: none;
+  background-color: inherit;
 
 }
 
@@ -327,11 +374,7 @@ input {
 }
 
 /* General styles for the section */
-.listing-section {
-  padding: 20px;
-  background-color: #f9f9f9;
-  /* Light gray background for the section */
-}
+
 
 /* Styles for the row */
 .listing-section .row {
@@ -516,6 +559,12 @@ input {
   color: #007bff;
 }
 
+.color-1{
+  color: #005ea1;
+}
+.color-2{
+  color: #c1f0ff;
+}
 .quantity-input {
   max-width: 50px;
   border-color: #2c974b;
@@ -637,6 +686,11 @@ input {
   font-style: italic;
 }
 
+.alfa-slab-one-regular {
+  font-family: "Alfa Slab One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 
 
