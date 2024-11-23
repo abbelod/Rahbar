@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'bookings',
-    'hotels'
+    'hotels',
+    'transport',
+    'flights'
     
 ]
 

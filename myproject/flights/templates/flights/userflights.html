@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Listings</title>
+  {% load static %}
+  <!-- Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+  <style>
+    /* Custom sidebar styling */
+    .sidebar {
+      background-color: #f8f9fa;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      overflow-y: auto;
+    }
+    .content {
+      margin-left: 270px; /* Offset for the sidebar */
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'tourlist' %}">Tour Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'tourlist' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'tourlist' %}">Tours</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'tourlist' %}">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar for navigation -->
+  <div class="sidebar">
+    <h5>Navigation</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'tourlist' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'tourlist' %}">Tour Listings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'tourlist' %}">Hotel Listings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'tourlist' %}">Transportation Options</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'tourlist' %}">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'tourlist' %}">Contact</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <div class="container my-5">
+      <h1 class="text-center mb-4">Available Tours</h1>
+
+      <!-- Tour Listing Cards -->
+      <div class="row">
+        {% for tour in tours %}
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <div class="product-img">
+                <img src="{{ tour.image.url }}" class="card-img-top" alt="Tour Image">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ tour.name }}</h5>
+                <p class="card-text">{{ tour.description }}</p>
+                <ul class="list-unstyled">
+                  <li><strong>Duration:</strong> {{ tour.duration }} Days</li>
+                  <li><strong>Price:</strong> Rs{{ tour.price }} per person</li>
+                  <li><strong>Available Spots:</strong> {{ tour.available_bookings }}</li>
+                </ul>
+                <a href="{% url 'tourlist' %}" class="btn btn-primary">View Details</a>
+                <a href="{% url 'updatetour' tour.id %}" class="btn btn-warning btn-sm">Update</a>
+                                
+                <!-- Delete Button -->
+                <form action="{% url 'deletetour' tour.id %}" method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
