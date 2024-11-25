@@ -182,6 +182,21 @@ background-color: #aad6ec !important;
 background-color: #b0e2ff;
 }
 
+.blog-image img{
+  max-width: 90%;
+  border-radius: 1%;
+
+}
+.blog-content{
+  width:70%;
+  margin: 0 auto;
+}
+
+.blog-content p{
+  font-size: 1.2rem;
+  line-height: 1.7em;
+}
+
 .product-card {
   display: flex;
   /*border: 1px solid #e0e0e0; /* Light border for the card */
@@ -209,6 +224,11 @@ background-color: #b0e2ff;
 
 .product-detail-price {
   color: #1F4529;
+}
+
+.dark-green{
+  color: #1F4529;
+
 }
 
 .product-card:hover {
@@ -242,6 +262,16 @@ a {
 
 .create-listing form {
   max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px;
+  padding: 20px;
+  background-color: #F3F4F6;
+}
+
+.create-blog form {
+  max-width: 800px;
   margin: 0 auto;
   border: 1px solid white;
   border-radius: 10px;
@@ -335,11 +365,7 @@ textarea {
   overflow-y: auto;
 }
 
-.content {
-  margin-left: 270px;
-  /* Offset for the sidebar */
-  padding: 20px;
-}
+
 
 input {
   margin: 4px;

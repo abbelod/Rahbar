@@ -5,6 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.contrib.auth.models import User
 from .forms import RegisterForm, ProfileForm
+from hotels.models import Hotel
+from flights.models import Flight
+from transport.models import Transport
+from blog.models import Blog
 from TourPackages.models import Tour
 from bookings.models import Booking
 
@@ -65,9 +69,18 @@ def user_dashboard_view(request):
 @login_required
 def listings(request):
     tours = request.user.tours.all()
+    transports = request.user.transport_listings.all()
+    blogs = request.user.blogs.all()
+    flights = request.user.flight_listings.all()
+    hotels = request.user.hotel_listings.all()
+    context = {"tours":tours,
+               "transports":transports,
+               "blogs":blogs,
+               "flights":flights,
+               "hotels":hotels,
+               }
     
-    print(tours)
-    return render (request, 'account/listings.html', {"tours":tours})
+    return render (request, 'account/listings.html', context)
 
 @login_required
 def createlistings_view(request):

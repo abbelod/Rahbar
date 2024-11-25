@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{% static 'styles/chatbot.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-navbar">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}">Rahbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'tourlist' %}">Tours</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'hotellist' %}">Hotels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Transportation</a>
+              </li>
+              {% comment %} <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Contact</a>
+              </li> {% endcomment %}
+              {% if user.is_authenticated %}
+              
+              {% if profile.role == 'company' %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'listings' %}">Manage Listings</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'bookings' %}">Manage Bookings</a>
+              </li>
+              
+              <li class="nav-item">
+                <form action={% url 'logout' %} method="post">
+                  {% csrf_token %}
+                  <div class="logout-button">
+                    <input type="submit" value="logout">
+                  </div>
+              </form>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" >{{ user.username }}</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Log in</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+<div class="container ">
+    <h1 class="text-center my-4 create-listing-title poppins-bold">RahbarBot</h1>
+
+    <div class="chat-container my-5 rounded">
+     
+      <div class="chat-messages" id="chat-messages">
+          <!-- Messages will appear here -->
+      </div>
+      <div class="chat-input">
+          <input type="text" id="user-message" placeholder="Type your message...">
+          <button onclick="sendMessage()">Send</button>
+      </div>
+  </div>
+</div>
+
+     <script>
+        async function sendMessage() {
+            const input = document.getElementById("user-message");
+            const message = input.value.trim();
+            if (!message) return;
+
+            // Add user message to chat
+            const chatMessages = document.getElementById("chat-messages");
+            const breakelement = document.createElement("br")
+            const userMessageDiv = document.createElement("div");
+            userMessageDiv.classList.add("message", "user");
+            userMessageDiv.textContent = message;
+            chatMessages.appendChild(userMessageDiv);
+            chatMessages.appendChild(breakelement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Clear input
+            input.value = "";
+
+            // Send the message to the server
+            try {
+                const response = await fetch("{% url 'chatbot' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "X-CSRFToken": "{{ csrf_token }}",
+                    },
+                    body: new URLSearchParams({ message: message }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const botMessageDiv = document.createElement("div");
+                    const breakelement = document.createElement("br")
+                    botMessageDiv.classList.add("message", "bot");
+                    console.log(data.response)
+                    botMessageDiv.innerHTML = data.response;
+                    chatMessages.appendChild(botMessageDiv);
+                    chatMessages.appendChild(breakelement)
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                } else {
+                    throw new Error("Failed to get response from server");
+                }
+            } catch (error) {
+                const errorDiv = document.createElement("div");
+                errorDiv.classList.add("message", "bot");
+                errorDiv.textContent = "Error: Unable to connect to the chatbot.";
+                chatMessages.appendChild(errorDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+    </script>
+    
+    {% comment %} <script src="{% static 'js/chatbot/chatbot.js' %}"></script> {% endcomment %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</body>
+</html>
