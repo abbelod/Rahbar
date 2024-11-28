@@ -25,11 +25,13 @@ urlpatterns = [
     path('hotels/', include('hotels.urls')),
     path('', include('home.urls')),
     path('accounts/', include('accounts.urls')),
+    path('planner/', include('planner.urls')),
     path('bookings/', include('bookings.urls')),
     path('transport/', include('transport.urls')),
     path('flights/', include('flights.urls')),
     path('blogs/', include('blog.urls')),
     path('chatbot/', include('chatbot.urls')),
+
 ]
     
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
