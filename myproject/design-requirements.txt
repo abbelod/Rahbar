@@ -1,0 +1,14 @@
+1. create update delete tour package
+1. create update delete transport package
+1. create update delete hotel package
+1. create update delete flight package
+4. talk to chat bot
+5. write a blog and view blog
+
+view user bookings
+company can cancel users bookings
+
+company can see all their listings of all types
+create new model listing that links company n their listing
+
+https://www.pinterest.com/pin/674062269260244726/ product card
