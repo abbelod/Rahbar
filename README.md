@@ -35,17 +35,17 @@ Before you begin, ensure you have the following installed on your machine:
 git clone https://github.com/abbelod/Rahbar.git
 cd myproject
 
-## Making Migrations
+## **Making Migrations**
 python manage.py makemigrations
 python manage.py migrate
 
-## Creating Superuser
+## **Creating Superuser**
 python manage.py createsuperuser
 
-## Setting Up API key in .env file
+## **Setting Up API key in .env file**
 touch .env
 GROQ_API_KEY={put api key here}
 get your api key from groq
 
-## Run the Server
+## **Run the Server**
 python manage.py runserver
