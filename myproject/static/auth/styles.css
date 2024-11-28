@@ -22,8 +22,13 @@ body{
   border-radius: 7px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
+
+.registration select{
+  border-radius: 9px ;
+}
+
 .container .registration{
-  display: none;
+  display: block;
 }
 #check:checked ~ .registration{
   display: block;

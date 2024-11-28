@@ -12,7 +12,7 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-navbar">
     <div class="container">
       <a class="navbar-brand" href="{% url 'home' %}">Rahbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,18 +23,36 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'tourlist' %}">Tours</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Hotels</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Transportation</a>
-          </li>
-          <li class="nav-item">
+          {% comment %} <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Contact</a>
+          </li> {% endcomment %}
+          {% if user.is_authenticated %}
+          
+          {% if profile.role == 'company' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'listings' %}">Manage Listings</a>
           </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'bookings' %}">Manage Bookings</a>
+          </li>
+          
+          <li class="nav-item">
+            <form action={% url 'logout' %} method="post">
+              {% csrf_token %}
+              <div class="logout-button">
+                <input type="submit" value="logout">
+              </div>
+          </form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" >{{ user.username }}</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Log in</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -43,135 +61,135 @@
   <!-- Hero Section -->
   <div class="hero-section">
     <div class="container">
-      <h1>Welcome to Rahbar</h1>
-      <p>Your one-stop destination for booking amazing tours, hotels, and transportation.</p>
-      <a href="{% url 'tourlist' %}" class="btn btn-primary btn-lg">Explore Tours</a>
+      <h1 class="alfa-slab-one-regular color-2">Rahbar</h1>
+      <h2 class="alfa-slab-one-regular color-1 ">one-stop destination for your tours, hotels and transportation</h2>
     </div>
   </div>
 
-  <!-- Popular Tours Section -->
-  <div class="container my-5">
+  <div class="bg-color-1 mt-0">
+    <div class="container py-5">
+      <div class="container">
+          <h1>Welcome to Rahbar</h1>
+          <p>Your one-stop destination for booking amazing tours, hotels, transportation, and more.</p>
+        </div>
+        
+        
+    </div>
     <div class="container">
-        <h1>Welcome to Rahbar</h1>
-        <p>Your one-stop destination for booking amazing tours, hotels, transportation, and more.</p>
+      <div class="row">
+          <!-- Tours Card -->
+          <div class="col-md-4 mb-4">
+              <div class="card services-card hover-effect-1">
+                  <div class="card-img">
+                      <img src="{% static 'images/tours.jpg' %}" alt="Tours Image">
+                  </div>
+                  <div class="card-heading">
+                      <h2 class="poppins-regular">Tours</h2>
+                  </div>
+                  <div class="card-text">
+                      Explore unforgettable tours tailored for all types of adventurers.
+                  </div>
+                  <div class="card-btn">
+                      <button onclick="window.location.href='{% url 'tourlist' %}'" class="bg-color-1 btn">Explore Tours</button>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Transport Card -->
+          <div class="col-md-4 mb-4">
+              <div class="card services-card hover-effect-1">
+                  <div class="card-img">
+                      <img src="{% static 'images/bus.jpg' %}" alt="Transport Image">
+                  </div>
+                  <div class="card-heading">
+                      <h2 class="poppins-regular">Transport</h2>
+                  </div>
+                  <div class="card-text">
+                      Discover reliable transport options to suit your travel needs.
+                  </div>
+                  <div class="card-btn">
+                      <button onclick="window.location.href='{% url 'transportlist' %}'" class="bg-color-1 btn">Book Transport</button>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Planes Card -->
+          <div class="col-md-4 mb-4">
+              <div class="card services-card hover-effect-1">
+                  <div class="card-img">
+                      <img src="{% static 'images/flight.jpg' %}" alt="Planes Image">
+                  </div>
+                  <div class="card-heading">
+                      <h2 class="poppins-regular">Flights</h2>
+                  </div>
+                  <div class="card-text">
+                      Book national and international flights with ease and comfort.
+                  </div>
+                  <div class="card-btn">
+                      <button onclick="window.location.href='{% url 'flightlist' %}'" class="bg-color-1 btn">Book Flights</button>
+                  </div>
+              </div>
+          </div>
       </div>
       
-      
+      <div class="row">
+          <!-- Blogs Card -->
+          <div class="col-md-4 mb-4">
+              <div class="card services-card hover-effect-1">
+                  <div class="card-img">
+                      <img src="{% static 'images/blog.jpg' %}" alt="Blogs Image">
+                  </div>
+                  <div class="card-heading">
+                      <h2 class="poppins-regular">Blogs</h2>
+                  </div>
+                  <div class="card-text">
+                      Stay informed with travel tips, guides, and the latest trends.
+                  </div>
+                  <div class="card-btn">
+                      <button onclick="window.location.href='{% url 'blogs' %}'" class="bg-color-1 btn">Read Blogs</button>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- RahbarAI Card -->
+          <div class="col-md-4 mb-4">
+              <div class="card services-card hover-effect-1">
+                  <div class="card-img">
+                      <img src="{% static 'images/bot.jpg' %}" alt="RahbarAI Image">
+                  </div>
+                  <div class="card-heading">
+                      <h2 class="poppins-regular">RahbarAI</h2>
+                  </div>
+                  <div class="card-text">
+                      Get guidance from our intelligent chatbot for seamless travels.
+                  </div>
+                  <div class="card-btn">
+                      <button onclick="window.location.href='{% url 'chatbot_page' %}'" class="bg-color-1 btn">Meet RahbarAI</button>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Hotels Card -->
+          <div class="col-md-4 mb-4">
+              <div class="card services-card hover-effect-1">
+                  <div class="card-img">
+                      <img src="{% static 'images/hotel.jpg' %}" alt="Hotels Image">
+                  </div>
+                  <div class="card-heading">
+                      <h2 class="poppins-regular">Hotels</h2>
+                  </div>
+                  <div class="card-text">
+                      Find and book top-rated hotels for your stay.
+                  </div>
+                  <div class="card-btn">
+                      <button onclick="window.location.href='{% url 'hotellist' %}'" class="bg-color-1 btn">Book Hotels</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+     
   </div>
-
-  <div class="container">
-    <div class="row">
-        <!-- Tours Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-img">
-                    <img src="{% static 'images/tours.jpg' %}" alt="Tours Image">
-                </div>
-                <div class="card-heading">
-                    <h2>Tours</h2>
-                </div>
-                <div class="card-text">
-                    Explore unforgettable tours tailored for all types of adventurers.
-                </div>
-                <div class="card-btn">
-                    <button onclick="window.location.href='{% url 'home' %}'">Explore Tours</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Transport Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-img">
-                    <img src="{% static 'images/bus.jpg' %}" alt="Transport Image">
-                </div>
-                <div class="card-heading">
-                    <h2>Transport</h2>
-                </div>
-                <div class="card-text">
-                    Discover reliable transport options to suit your travel needs.
-                </div>
-                <div class="card-btn">
-                    <button onclick="window.location.href='{% url 'home' %}'">Book Transport</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Planes Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-img">
-                    <img src="{% static 'images/flight.jpg' %}" alt="Planes Image">
-                </div>
-                <div class="card-heading">
-                    <h2>Flights</h2>
-                </div>
-                <div class="card-text">
-                    Book national and international flights with ease and comfort.
-                </div>
-                <div class="card-btn">
-                    <button onclick="window.location.href='{% url 'home' %}'">Book Flights</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        <!-- Blogs Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-img">
-                    <img src="{% static 'images/blog.jpg' %}" alt="Blogs Image">
-                </div>
-                <div class="card-heading">
-                    <h2>Blogs</h2>
-                </div>
-                <div class="card-text">
-                    Stay informed with travel tips, guides, and the latest trends.
-                </div>
-                <div class="card-btn">
-                    <button onclick="window.location.href='{% url 'home' %}'">Read Blogs</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- RahbarAI Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-img">
-                    <img src="{% static 'images/bot.jpg' %}" alt="RahbarAI Image">
-                </div>
-                <div class="card-heading">
-                    <h2>RahbarAI</h2>
-                </div>
-                <div class="card-text">
-                    Get guidance from our intelligent chatbot for seamless travels.
-                </div>
-                <div class="card-btn">
-                    <button onclick="window.location.href='{% url 'home' %}'">Meet RahbarAI</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hotels Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-img">
-                    <img src="{% static 'images/hotel.jpg' %}" alt="Hotels Image">
-                </div>
-                <div class="card-heading">
-                    <h2>Hotels</h2>
-                </div>
-                <div class="card-text">
-                    Find and book top-rated hotels for your stay.
-                </div>
-                <div class="card-btn">
-                    <button onclick="window.location.href='{% url 'home' %}'">Book Hotels</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  </div>
 
 
   <!-- Features Section -->
@@ -203,14 +221,14 @@
     <div class="container">
       <h2>Ready to Start Your Adventure?</h2>
       <p>Sign up today and begin exploring the world with us.</p>
-      <a href="{% url 'home' %}" class="btn btn-light btn-lg">Get Started</a>
+      <a href="{% url 'signup' %}" class="btn btn-light btn-lg">Get Started</a>
     </div>
   </div>
 
   <!-- Footer -->
   <footer class="bg-light py-4">
     <div class="container text-center">
-      <p>&copy; {{ current_year }} Tour Management. All rights reserved.</p>
+      <p>&copy; {{ current_year }} Rahbar. All rights reserved.</p>
     </div>
   </footer>
 

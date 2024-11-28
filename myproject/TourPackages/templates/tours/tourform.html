@@ -6,7 +6,8 @@
   <title>Tour Listings</title>
   {% load static %}
   <!-- Bootstrap CSS for styling -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
   <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
   <style>
     /* Custom sidebar styling */
@@ -38,41 +39,71 @@
     </div>
   </nav>
 
-  <!-- Sidebar for navigation -->
-  <div class="sidebar">
-    <h5>Navigation</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'tourlist' %}">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'tourlist' %}">Tour Listings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'tourlist' %}">Hotel Listings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'tourlist' %}">Transportation Options</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'tourlist' %}">About Us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'tourlist' %}">Contact</a>
-      </li>
-    </ul>
-  </div>
-
   <!-- Main Content Area -->
   <div class="content">
     <div class="container my-5">
-      <h1 class="text-center mb-4">Add Tours</h1>
+      <h1 class="text-center create-listing-title mb-4 poppins-bold">Add Tours</h1>
+      <div class="d-flex create-listing" >
+        {% comment %} <form action="{% url 'tourform' %}" method="post" enctype="multipart/form-data" style="width: 100%;">
+            {% csrf_token %}
+            <div class="row g-3">
+                <!-- First Column -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.origin_country.label_tag }}
+                        {{ form.origin_country }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.destination_country.label_tag }}
+                        {{ form.destination_country }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.number_of_nights.label_tag }}
+                        {{ form.number_of_nights }}
+                    </div>
+                </div>
+    
+                <!-- Second Column -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        {{ form.price.label_tag }}
+                        {{ form.price }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.image.label_tag }}
+                        {{ form.image }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.available_bookings.label_tag }}
+                        {{ form.available_bookings }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.description.label_tag }}
+                        {{ form.description }}
+                    </div>
+                </div>
+    
+                <!-- Submit Button -->
+                <div class="col-12 text-center">
+                    <input type="submit" value="Create Tour" class="btn btn-primary">
+                </div>
+            </div>
+        </form> {% endcomment %}
+        <form action="{% url 'tourform' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form }}
+        <input type="submit" class="button" value="Create">
 
-      <form action="{% url 'tourform' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>   
+      </form>
+    </div>
+    
+    
+
+
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
