@@ -231,6 +231,10 @@ background-color: #b0e2ff;
 
 }
 
+.dark-green-2{
+  color:#003018;
+}
+
 .product-card:hover {
   transform: translateY(-5px);
   /* Lift the card slightly on hover */

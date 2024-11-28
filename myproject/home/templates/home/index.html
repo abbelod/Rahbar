@@ -70,7 +70,7 @@
   <div class="bg-color-1 mt-0">
     <div class="container py-5">
       <div class="container">
-          <h1>Welcome to Rahbar</h1>
+          <h1 class="dark-green-2">Begin your Journey</h1>
           <p>Your one-stop destination for booking amazing tours, hotels, transportation, and more.</p>
         </div>
         
@@ -81,11 +81,11 @@
           <!-- Tours Card -->
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
-                  <div class="card-img">
-                      <img src="{% static 'images/tours.jpg' %}" alt="Tours Image">
+                  <div class="card-img rounded">
+                      <img class="rounded"src="{% static 'images/tours.jpg' %}" alt="Tours Image">
                   </div>
-                  <div class="card-heading">
-                      <h2 class="poppins-regular">Tours</h2>
+                  <div class="card-heading mt-1">
+                      <h2 class="poppins-medium dark-green-2 dark-green-2">Tours</h2>
                   </div>
                   <div class="card-text">
                       Explore unforgettable tours tailored for all types of adventurers.
@@ -100,10 +100,10 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img src="{% static 'images/bus.jpg' %}" alt="Transport Image">
+                      <img class="rounded" src="{% static 'images/bus.jpg' %}" alt="Transport Image">
                   </div>
-                  <div class="card-heading">
-                      <h2 class="poppins-regular">Transport</h2>
+                  <div class="card-heading mt-1">
+                      <h2 class="poppins-medium dark-green-2">Transport</h2>
                   </div>
                   <div class="card-text">
                       Discover reliable transport options to suit your travel needs.
@@ -118,10 +118,10 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img src="{% static 'images/flight.jpg' %}" alt="Planes Image">
+                      <img class="rounded" src="{% static 'images/flight.jpg' %}" alt="Planes Image">
                   </div>
-                  <div class="card-heading">
-                      <h2 class="poppins-regular">Flights</h2>
+                  <div class="card-heading mt-1">
+                      <h2 class="poppins-medium dark-green-2">Flights</h2>
                   </div>
                   <div class="card-text">
                       Book national and international flights with ease and comfort.
@@ -138,10 +138,10 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img src="{% static 'images/blog.jpg' %}" alt="Blogs Image">
+                      <img class="rounded" src="{% static 'images/blog.jpg' %}" alt="Blogs Image">
                   </div>
-                  <div class="card-heading">
-                      <h2 class="poppins-regular">Blogs</h2>
+                  <div class="card-heading mt-1">
+                      <h2 class="poppins-medium dark-green-2">Blogs</h2>
                   </div>
                   <div class="card-text">
                       Stay informed with travel tips, guides, and the latest trends.
@@ -156,10 +156,10 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img src="{% static 'images/bot.jpg' %}" alt="RahbarAI Image">
+                      <img class="rounded" src="{% static 'images/bot.jpg' %}" alt="RahbarAI Image">
                   </div>
-                  <div class="card-heading">
-                      <h2 class="poppins-regular">RahbarAI</h2>
+                  <div class="card-heading mt-1">
+                      <h2 class="poppins-medium dark-green-2">RahbarAI</h2>
                   </div>
                   <div class="card-text">
                       Get guidance from our intelligent chatbot for seamless travels.
@@ -174,10 +174,10 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img src="{% static 'images/hotel.jpg' %}" alt="Hotels Image">
+                      <img class="rounded" src="{% static 'images/hotel.jpg' %}" alt="Hotels Image">
                   </div>
-                  <div class="card-heading">
-                      <h2 class="poppins-regular">Hotels</h2>
+                  <div class="card-heading mt-1">
+                      <h2 class="poppins-medium dark-green-2">Hotels</h2>
                   </div>
                   <div class="card-text">
                       Find and book top-rated hotels for your stay.
@@ -193,7 +193,17 @@
   </div>
 
 
-  <!-- Features Section -->
+  
+
+  <!-- Call to Action Section -->
+  <div class="cta-section text-center">
+    <div class="container">
+      <h2>Ready to Start Your Adventure?</h2>
+      <p>Plan your trip now with our new itinerary planner!</p>
+      <a href="{% url 'planner' %}" class="btn btn-light btn-lg">Get Started</a>
+    </div>
+  </div>
+
   <div class="features-section">
     <div class="container">
       <h2 class="text-center mb-4">Why Choose Us?</h2>
@@ -214,15 +224,6 @@
           <p>Our team is here to help you with all your booking needs.</p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Call to Action Section -->
-  <div class="cta-section text-center">
-    <div class="container">
-      <h2>Ready to Start Your Adventure?</h2>
-      <p>Sign up today and begin exploring the world with us.</p>
-      <a href="{% url 'signup' %}" class="btn btn-light btn-lg">Get Started</a>
     </div>
   </div>
 
