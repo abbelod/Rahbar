@@ -21,7 +21,7 @@
                 {% for tour in tours %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  tour.name}}  </h5>
                       <a href="{% url 'tourdetail' tour.id %}" class="btn btn-primary btn-sm">Detail</a>
@@ -45,7 +45,7 @@
                 {% for hotel in hotels %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ hotel.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ hotel.image.url }}" alt="Card  cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  hotel.name}}  </h5>
                       <a href="{% url 'hoteldetail' hotel.id %}" class="btn btn-primary btn-sm">Detail</a>
@@ -70,7 +70,7 @@
                 {% for flight in flights %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card  cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  tour.name}}  </h5>
                       <a href="{% url 'flightdetail' flight.id %}" class="btn btn-primary btn-sm">Detail</a>
@@ -94,7 +94,7 @@
                 {% for transport in transports %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ transport.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ transport.image.url }}" alt="Card cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  transport.name}}  </h5>
                       <a href="{% url 'transportdetail' transport.id %}" class="btn btn-primary btn-sm">Detail</a>
@@ -118,7 +118,7 @@
                 {% for blog in blogs %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ blog.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ blog.image.url }}" alt="Card cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  blog.title}}  </h5>
                       <a href="{% url 'blogview' blog.slug %}" class="btn btn-primary btn-sm">Detail</a>

@@ -17,7 +17,7 @@ def transportlist(request):
 
 @login_required
 @require_http_methods(["GET", "POST"])  # Sensitive
-def transportForm(request):
+def transportform(request):
     if request.method == "POST":
         form = TransportForm(request.POST, request.FILES)
         print(request.FILES)
@@ -36,12 +36,12 @@ def transportForm(request):
 def updatetransport_view(request, id):
     listing = Transport.objects.all().filter(id = id).first()
     if request.method == 'POST':
-        form = transportForm(request.POST, instance = listing)
+        form = TransportForm(request.POST, instance = listing)
         if form.is_valid():
             form.save()
             return redirect(usertransports_view)
     else:
-        form = transportForm(instance=listing)
+        form = TransportForm(instance=listing)
         return render(request, 'transports/updatetransport.html', {"form":form, "listing": listing})
     
 @login_required
@@ -66,7 +66,7 @@ def transportdetail_view(request, id):
     if request.method == 'POST':
         transport = Transport.objects.get(id = id)
         quantity = int(request.POST.get('quantity'))
-        booking = Booking.objects.create(
+        Booking.objects.create(
             user = request.user,
             content_type=ContentType.objects.get_for_model(transport),
             object_id=transport.id,

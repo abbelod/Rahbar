@@ -18,7 +18,7 @@ def flightlist(request):
 
 @login_required
 @require_http_methods(["GET", "POST"])  # Sensitive
-def flightForm(request):
+def flightform(request):
     if request.method == "POST":
         form = FlightForm(request.POST, request.FILES)
         print(request.FILES)
@@ -48,7 +48,7 @@ def updateflight_view(request, id):
 @login_required
 @require_http_methods(["GET", "POST"])  # Sensitive
 def deleteflight_view(request, id):
-    listing = flight.objects.all().filter(id = id).first()
+    listing = Flight.objects.all().filter(id = id).first()
     if request.method == 'POST':
         listing.delete()
         return redirect(userflights_view)
@@ -68,7 +68,7 @@ def flightdetail_view(request, id):
     if request.method == 'POST':
         flight = Flight.objects.get(id = id)
         quantity = int(request.POST.get('quantity'))
-        booking = Booking.objects.create(
+        Booking.objects.create(
             user = request.user,
             content_type=ContentType.objects.get_for_model(flight),
             object_id=flight.id,

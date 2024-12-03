@@ -7,7 +7,6 @@ class TourForm(forms.ModelForm):
     class Meta:
         model = Tour
         fields = ['name', 'origin_country', 'destination_country', 'number_of_nights', 'price', 'image', 'available_bookings','description']
-        # fields = '__all__'
     
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget = forms.PasswordInput)

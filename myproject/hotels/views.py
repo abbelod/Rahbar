@@ -17,7 +17,7 @@ def hotellist(request):
 
 @login_required
 @require_http_methods(["GET", "POST"])  # Sensitive
-def hotelForm(request):
+def hotelform(request):
     if request.method == "POST":
         form = HotelForm(request.POST, request.FILES)
         if form.is_valid():
@@ -65,7 +65,7 @@ def hoteldetail_view(request, id):
     if request.method == 'POST':
         hotel = Hotel.objects.get(id = id)
         quantity = int(request.POST.get('quantity'))
-        booking = Booking.objects.create(
+        Booking.objects.create(
             user = request.user,
             content_type=ContentType.objects.get_for_model(hotel),
             object_id=hotel.id,

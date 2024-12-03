@@ -16,7 +16,7 @@ def tourlist(request):
     return render(request, 'tours/tourlist.html', context)
 @require_http_methods(["GET", "POST"])  # Sensitive
 @login_required
-def tourForm(request):
+def tourform(request):
     if request.method == "POST":
         form = TourForm(request.POST, request.FILES)
         print(request.FILES)
@@ -63,7 +63,7 @@ def tourdetail_view(request, id):
     if request.method == 'POST':
         tour = Tour.objects.get(id = id)
         quantity = int(request.POST.get('quantity'))
-        booking = Booking.objects.create(
+        Booking.objects.create(
             user = request.user,
             content_type=ContentType.objects.get_for_model(tour),
             object_id=tour.id,

@@ -7,55 +7,7 @@
     <div class="container my-5">
       <h1 class="text-center create-listing-title mb-4 poppins-bold">Add hotels</h1>
       <div class="d-flex create-listing" >
-        {% comment %} <form action="{% url 'hotelform' %}" method="post" enctype="multipart/form-data" style="width: 100%;">
-            {% csrf_token %}
-            <div class="row g-3">
-                <!-- First Column -->
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        {{ form.name.label_tag }}
-                        {{ form.name }}
-                    </div>
-                    <div class="mb-3">
-                        {{ form.origin_country.label_tag }}
-                        {{ form.origin_country }}
-                    </div>
-                    <div class="mb-3">
-                        {{ form.destination_country.label_tag }}
-                        {{ form.destination_country }}
-                    </div>
-                    <div class="mb-3">
-                        {{ form.number_of_nights.label_tag }}
-                        {{ form.number_of_nights }}
-                    </div>
-                </div>
-    
-                <!-- Second Column -->
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        {{ form.price.label_tag }}
-                        {{ form.price }}
-                    </div>
-                    <div class="mb-3">
-                        {{ form.image.label_tag }}
-                        {{ form.image }}
-                    </div>
-                    <div class="mb-3">
-                        {{ form.available_bookings.label_tag }}
-                        {{ form.available_bookings }}
-                    </div>
-                    <div class="mb-3">
-                        {{ form.description.label_tag }}
-                        {{ form.description }}
-                    </div>
-                </div>
-    
-                <!-- Submit Button -->
-                <div class="col-12 text-center">
-                    <input type="submit" value="Create hotel" class="btn btn-primary">
-                </div>
-            </div>
-        </form> {% endcomment %}
+      
         <form action="{% url 'hotelform' %}" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form }}

@@ -32,8 +32,15 @@ def bloglist_view(request):
     return render(request, 'blog/bloglist.html', context)
 
 
-def deleteblog_view(request):
-    pass
+@login_required
+def deleteblog_view(request, slug):
+    if request.method=="POST":
+        blog = get_object_or_404(Blog, slug=slug)
+        if blog.created_by==request.user:
+            blog.delete()
+        return redirect(bloglist_view)
+        
+
 
 @require_http_methods(["GET"])  # Sensitive
 def blog_view(request, slug):

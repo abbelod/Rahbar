@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.flightlist, name = "flightlist"),
-    path('flightform/', views.flightForm, name = "flightform"),
+    path('flightform/', views.flightform, name = "flightform"),
     path('flightlist/', views.flightlist, name = "flightlist"),
     path('userflights/', views.userflights_view, name = "userflights"),
     path('updateflight/<int:id>/', views.updateflight_view, name = "updateflight"),
