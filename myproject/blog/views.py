@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BlogForm
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
 from .models import Blog
 
 # Create your views here.
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def blogform_view(request):
     if request.method == 'POST':
         form = BlogForm(request.POST, request.FILES)
@@ -18,10 +20,12 @@ def blogform_view(request):
     context= {"form":form}
     return render(request, 'blog/blogform.html', context)
 
+@require_http_methods(["GET", "POST"])  # Sensitive
 def editblog_view(request):
     pass
 
 
+@require_http_methods(["GET"])  # Sensitive
 def bloglist_view(request):
     blogs = Blog.objects.all()
     context = {"blogs": blogs}
@@ -31,7 +35,7 @@ def bloglist_view(request):
 def deleteblog_view(request):
     pass
 
-
+@require_http_methods(["GET"])  # Sensitive
 def blog_view(request, slug):
     blog = get_object_or_404(Blog, slug=slug)
     context = {"blog": blog}

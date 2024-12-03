@@ -6,16 +6,17 @@ from django.contrib.auth.models import User
 from bookings.models import Booking
 from django.contrib.contenttypes.models import ContentType
 from .forms import HotelForm
-
+from django.views.decorators.http import require_http_methods
 
 # Create your views here.
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def hotellist(request):
     hotels = Hotel.objects.all()
     context = {'hotels':hotels}
     return render(request, 'hotels/hotellist.html', context)
 
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def hotelForm(request):
     if request.method == "POST":
         form = HotelForm(request.POST, request.FILES)
@@ -30,6 +31,7 @@ def hotelForm(request):
         form = HotelForm()
     return render(request, "hotels/hotelform.html", {"form": form})
 
+@require_http_methods(["GET", "POST"])  # Sensitive
 def updatehotel_view(request, id):
     listing = Hotel.objects.all().filter(id = id).first()
     if request.method == 'POST':
@@ -40,15 +42,16 @@ def updatehotel_view(request, id):
     else:
         form = HotelForm(instance=listing)
         return render(request, 'hotels/updatehotel.html', {"form":form, "listing": listing})
-    
+ 
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def deletehotel_view(request, id):
     listing = Hotel.objects.all().filter(id = id).first()
     if request.method == 'POST':
         listing.delete()
         return redirect('listings')
        
-    
+@require_http_methods(["GET", "POST"])  # Sensitive  
 @login_required
 def userhotels_view(request):
     hotels = Hotel.objects.filter(created_by = request.user)
@@ -57,6 +60,7 @@ def userhotels_view(request):
     return render(request, 'hotels/userhotels.html', context)
 
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def hoteldetail_view(request, id):
     if request.method == 'POST':
         hotel = Hotel.objects.get(id = id)

@@ -5,16 +5,16 @@ from .models import Tour
 from django.contrib.auth.models import User
 from bookings.models import Booking
 from django.contrib.contenttypes.models import ContentType
-
+from django.views.decorators.http import require_http_methods
 from .forms import  TourForm
 
 # Create your views here.
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def tourlist(request):
     tours = Tour.objects.all()
     context = {'tours':tours}
     return render(request, 'tours/tourlist.html', context)
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 @login_required
 def tourForm(request):
     if request.method == "POST":
@@ -29,7 +29,7 @@ def tourForm(request):
     else:
         form = TourForm()
     return render(request, "tours/tourform.html", {"form": form})
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def updatetour_view(request, id):
     listing = Tour.objects.all().filter(id = id).first()
     if request.method == 'POST':
@@ -40,7 +40,7 @@ def updatetour_view(request, id):
     else:
         form = TourForm(instance=listing)
         return render(request, 'tours/updatetour.html', {"form":form, "listing": listing})
-    
+@require_http_methods(["GET", "POST"])  # Sensitive   
 @login_required
 def deletetour_view(request, id):
     listing = Tour.objects.all().filter(id = id).first()
@@ -50,6 +50,7 @@ def deletetour_view(request, id):
        
     
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def usertours_view(request):
     tours = Tour.objects.filter(created_by = request.user)
     print(tours)
@@ -57,6 +58,7 @@ def usertours_view(request):
     return render(request, 'tours/usertours.html', context)
 
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def tourdetail_view(request, id):
     if request.method == 'POST':
         tour = Tour.objects.get(id = id)
