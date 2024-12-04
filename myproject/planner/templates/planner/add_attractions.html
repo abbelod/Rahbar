@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Attractions</title>
-    {% load static %}
-    <!-- Bootstrap CSS for styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% extends "base.html" %}
+{% load static %}
+
+    {% block styles %}
     <style>
         /* Sidebar Styling */
         .sidebar {
@@ -16,11 +9,10 @@
             padding: 20px;
             height: 100vh;
             position: fixed;
-            top: 0;
             left: 0;
             width: 250px;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 0 15px 15px 0;
+            border-radius: 0 0px 15px 0;
             transition: 0.3s ease-in-out;
         }
 
@@ -129,8 +121,11 @@
             100% { opacity: 1; }
         }
     </style>
+    {% endblock %}
 </head>
 <body>
+
+{% block content %}
 
 <div class="sidebar">
     <h3>Planner Dashboard</h3>
@@ -172,5 +167,4 @@
     </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

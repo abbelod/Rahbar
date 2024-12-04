@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Itinerary</title>
-    {% load static %}
-    <!-- Bootstrap CSS for styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
     <style>
         /* Sidebar Styling */
         .sidebar {
@@ -16,11 +9,10 @@
             padding: 20px;
             height: 100vh;
             position: fixed;
-            top: 0;
             left: 0;
             width: 250px;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 0 15px 15px 0;
+            border-radius: 0 0px 15px 0;
             transition: 0.3s ease-in-out;
         }
 
@@ -58,94 +50,80 @@
             border-radius: 15px;
         }
 
-        /* Itinerary Styling */
-        .itinerary-container {
-            max-width: 900px;
+        /* Form Styling */
+        .form-container {
+            max-width: 700px;
             margin: 50px auto;
-            background: #ffffff;
+            background: linear-gradient(135deg, #e0fbfc, #99f2c8);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            text-align: left;
+            text-align: center;
             color: #333;
             animation: fadeIn 1s ease-in-out;
         }
 
-        .itinerary-container h1 {
+        .form-container h1 {
             margin-bottom: 30px;
             font-size: 2.5rem;
             font-weight: 700;
             color: #004a40;
         }
 
-        .itinerary-container h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-
-        .itinerary-container ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .itinerary-container li {
-            font-size: 1.2rem;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .itinerary-container li:last-child {
-            border-bottom: none;
-        }
-
-        /* Card Style for Attractions and Routes */
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-
-        .card-header {
-            background-color: #007bff;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-            border-radius: 15px 15px 0 0;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-body p {
-            font-size: 1.1rem;
+        .form-container .form-label {
+            font-weight: bold;
             color: #555;
         }
 
-        .card-body .btn {
+        .form-container .form-control {
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+
+        .form-container .form-control:focus {
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+            border-color: #007bff;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border-radius: 8px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 8px;
-            padding: 10px 20px;
             transition: background-color 0.3s ease;
+            margin-top: 20px;
         }
 
-        .card-body .btn:hover {
+        .form-container button:hover {
             background-color: #0056b3;
         }
 
-        /* Animation for page content */
+        /* Input Field Focus Effect */
+        .form-container .form-control:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 10px rgba(0, 86, 179, 0.2);
+        }
+
+        .form-container .mb-3 {
+            margin-bottom: 25px;
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
-
     </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
 
 <div class="sidebar">
     <h3>Planner Dashboard</h3>
@@ -193,5 +171,4 @@
     </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

@@ -362,13 +362,20 @@ textarea {
   padding: 20px;
   height: 100vh;
   position: fixed;
-  top: 0;
   left: 0;
   width: 250px;
   overflow-y: auto;
 }
 
-
+.navbar-border{
+  border-bottom: 5px solid #00c4ff;
+  position: sticky;
+  top: 0;
+}
+.footer-border{
+  border-top: 5px solid #00c4ff;
+  bottom: 0;
+}
 
 input {
   margin: 4px;
