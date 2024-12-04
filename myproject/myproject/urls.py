@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.shortcuts import redirect
 
 urlpatterns = [
+    path('', lambda request: redirect('/home/')),   #lambda se ham redirect request daal kar direct apny home page [pe ja sakty hain]
     path('admin/', admin.site.urls),
     path('tours/', include('TourPackages.urls')),
     path('hotels/', include('hotels.urls')),
-    path('', include('home.urls')),
+    path('home/', include('home.urls')),
     path('accounts/', include('accounts.urls')),
     path('planner/', include('planner.urls')),
     path('bookings/', include('bookings.urls')),
