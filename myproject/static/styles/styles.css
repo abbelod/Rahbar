@@ -15,7 +15,6 @@ body {
   color: white;
   padding: 100px 0;
   text-align: center;
-  /* height: 817px; */
   height: 95vh;
 }
 
@@ -39,13 +38,8 @@ body {
 }
 
 .service-card-1 {
-  /* margin-left: 15px; */
-  /* flex: 0 0 auto; */
-  /* width: 30%; */
   padding: 10px;
   background: url(../images/bus.jpg);
-  /* height: 250px; */
-  /* width: 200px; */
   height: 270px;
 }
 
@@ -105,7 +99,6 @@ body {
   font-weight: 600;
   line-height: 1.1;
   color: #3B1C32;
-  /* color: #FF6969; */
 
 
 }
@@ -198,8 +191,6 @@ background-color: #b0e2ff;
 
 .product-card {
   display: flex;
-  /*border: 1px solid #e0e0e0; /* Light border for the card */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   overflow: hidden;
   /* Ensure no overflow for content */
   transition: transform 0.3s, box-shadow 0.3s;
