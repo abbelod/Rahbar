@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.tourlist, name = "tourlist"),
-    path('tourform', views.tourForm, name = "tourform"),
+    path('tourform', views.tourform, name = "tourform"),
     path('tourlist/', views.tourlist, name = "tourlist"),
     path('usertours/', views.usertours_view, name = "usertours"),
     path('updatetour/<int:id>/', views.updatetour_view, name = "updatetour"),

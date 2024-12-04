@@ -1,64 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tour Management - Home</title>
-  {% load static %}
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
- 
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
 
-  <!-- Navbar -->
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">Rahbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
-          </li>
-          {% comment %} <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Contact</a>
-          </li> {% endcomment %}
-          {% if user.is_authenticated %}
-          
-          {% if profile.role == 'company' %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'listings' %}">Manage Listings</a>
-          </li>
-          {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'bookings' %}">Manage Bookings</a>
-          </li>
-          
-          <li class="nav-item">
-            <form action={% url 'logout' %} method="post">
-              {% csrf_token %}
-              <div class="logout-button">
-                <input type="submit" value="logout">
-              </div>
-          </form>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" >{{ user.username }}</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Log in</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+{% block content %}
   <!-- Hero Section -->
   <div class="hero-section">
     <div class="container">
@@ -82,7 +25,7 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img rounded">
-                      <img class="rounded"src="{% static 'images/tours.jpg' %}" alt="Tours Image">
+                      <img class="rounded"src="{% static 'images/tours.jpg' %}" alt="Tours ">
                   </div>
                   <div class="card-heading mt-1">
                       <h2 class="poppins-medium dark-green-2 dark-green-2">Tours</h2>
@@ -100,7 +43,7 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img class="rounded" src="{% static 'images/bus.jpg' %}" alt="Transport Image">
+                      <img class="rounded" src="{% static 'images/bus.jpg' %}" alt="Transport">
                   </div>
                   <div class="card-heading mt-1">
                       <h2 class="poppins-medium dark-green-2">Transport</h2>
@@ -118,7 +61,7 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img class="rounded" src="{% static 'images/flight.jpg' %}" alt="Planes Image">
+                      <img class="rounded" src="{% static 'images/flight.jpg' %}" alt="Planes">
                   </div>
                   <div class="card-heading mt-1">
                       <h2 class="poppins-medium dark-green-2">Flights</h2>
@@ -138,7 +81,7 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img class="rounded" src="{% static 'images/blog.jpg' %}" alt="Blogs Image">
+                      <img class="rounded" src="{% static 'images/blog.jpg' %}" alt="Blogs">
                   </div>
                   <div class="card-heading mt-1">
                       <h2 class="poppins-medium dark-green-2">Blogs</h2>
@@ -156,7 +99,7 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img class="rounded" src="{% static 'images/bot.jpg' %}" alt="RahbarAI Image">
+                      <img class="rounded" src="{% static 'images/bot.jpg' %}" alt="RahbarAI ">
                   </div>
                   <div class="card-heading mt-1">
                       <h2 class="poppins-medium dark-green-2">RahbarAI</h2>
@@ -174,7 +117,7 @@
           <div class="col-md-4 mb-4">
               <div class="card services-card hover-effect-1">
                   <div class="card-img">
-                      <img class="rounded" src="{% static 'images/hotel.jpg' %}" alt="Hotels Image">
+                      <img class="rounded" src="{% static 'images/hotel.jpg' %}" alt="Hotels">
                   </div>
                   <div class="card-heading mt-1">
                       <h2 class="poppins-medium dark-green-2">Hotels</h2>
@@ -265,17 +208,4 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-light py-4">
-    <div class="container text-center">
-      <p>&copy; {{ current_year }} Rahbar. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap and FontAwesome JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-</body>
-</html>
+{% endblock %}

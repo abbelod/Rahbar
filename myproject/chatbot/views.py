@@ -3,12 +3,12 @@ from django.shortcuts import render
 import markdown
 from groq import Groq
 from django.conf import settings
-
+from django.views.decorators.http import require_http_methods
 
 # Initialize the Groq client with the API key
 client = Groq(api_key=settings.GROQ_API_KEY)
 
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def chatbot_view(request):
     # Check if the request method is POST to handle user input
     if request.method == "POST":
@@ -49,6 +49,6 @@ def chatbot_view(request):
     # Return an error for non-POST requests
     return JsonResponse({"error": "Invalid request method"}, status=405)
 
-
+@require_http_methods(["GET"])  # Sensitive
 def chatbot_page_view(request):
     return render(request, 'chatbot/chatbot_page.html')

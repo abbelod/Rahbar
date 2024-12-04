@@ -1,88 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hotel Listings</title>
-  {% load static %}
-  <!-- Bootstrap CSS for styling -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-  <style>
-    /* Custom sidebar styling */
-    .sidebar {
-      background-color: #f8f9fa;
-      padding: 20px;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      overflow-y: auto;
-    }
-
-    .content {
-      margin-left: 270px;
-      /* Offset for the sidebar */
-      padding: 20px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'hotellist' %}">Rahbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'hotellist' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'hotellist' %}">hotels</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'hotellist' %}">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Sidebar for navigation -->
-  {% comment %} <div class="sidebar">
-    <h5>Navigation</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'hotellist' %}">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'hotellist' %}">hotel Listings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'hotellist' %}">Hotel Listings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'hotellist' %}">Transportation Options</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'hotellist' %}">About Us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'hotellist' %}">Contact</a>
-      </li>
-    </ul>
-  </div> {% endcomment %}
-
+{% block content %}
   <!-- Main Content Area -->
   <div class="content">
     <div class="container my-5">
@@ -96,7 +15,7 @@
             <div class="col-4  bg-product-card px-0 rounded-start">
 
                 <div class="product-detail-img">
-                  <img src="{{ hotel.image.url }}" class="card-img-top" alt="hotel Image">
+                  <img src="{{ hotel.image.url }}" class="card-img-top" alt="hotel ">
                 </div>
   
             </div>
@@ -140,10 +59,4 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+{% endblock %}

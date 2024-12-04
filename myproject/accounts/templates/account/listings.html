@@ -1,63 +1,8 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login & Registration Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-</head>
+{% block content %}
 
-<body class='green-bg'>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Rahbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'tourlist' %}">Tours</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Hotels</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Transportation</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Contact</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Hello, {{ user.username }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'listings' %}">Manage Listings</a>
-                    </li>
-                    <li class="nav-item">
-                        <form action={% url 'logout' %} method="post">
-                            {% csrf_token %}
-                            <div class="logout-button">
-                                <input type="submit" value="logout">
-                            </div>
-                        </form>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-
-    </nav>
     <div class="container d-flexalign-items-center" >
         <div class="no-listing justify-content-center align-items-center text-center">
             <a href="{% url 'createlistings' %}" class="btn-create mt-4">
@@ -76,7 +21,7 @@
                 {% for tour in tours %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  tour.name}}  </h5>
                       <a href="{% url 'tourdetail' tour.id %}" class="btn btn-primary btn-sm">Detail</a>
@@ -100,7 +45,7 @@
                 {% for hotel in hotels %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ hotel.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ hotel.image.url }}" alt="Card  cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  hotel.name}}  </h5>
                       <a href="{% url 'hoteldetail' hotel.id %}" class="btn btn-primary btn-sm">Detail</a>
@@ -125,7 +70,7 @@
                 {% for flight in flights %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ tour.image.url }}" alt="Card  cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  tour.name}}  </h5>
                       <a href="{% url 'flightdetail' flight.id %}" class="btn btn-primary btn-sm">Detail</a>
@@ -149,7 +94,7 @@
                 {% for transport in transports %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ transport.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ transport.image.url }}" alt="Card cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  transport.name}}  </h5>
                       <a href="{% url 'transportdetail' transport.id %}" class="btn btn-primary btn-sm">Detail</a>
@@ -173,7 +118,7 @@
                 {% for blog in blogs %}
                 <!-- Listing Card 1 -->
                 <div class="card listing-card" style="width: 18rem;">
-                    <img class="card-img-top listing-img" src="{{ blog.image.url }}" alt="Card image cap">
+                    <img class="card-img-top listing-img" src="{{ blog.image.url }}" alt="Card cap">
                     <div class="card-body">
                       <h5 class="card-title">{{  blog.title}}  </h5>
                       <a href="{% url 'blogview' blog.slug %}" class="btn btn-primary btn-sm">Detail</a>
@@ -204,7 +149,4 @@
 
     
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-
-</html>
+ {% endblock %}

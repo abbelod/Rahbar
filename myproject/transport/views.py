@@ -5,18 +5,19 @@ from .models import Transport
 from django.contrib.auth.models import User
 from bookings.models import Booking
 from django.contrib.contenttypes.models import ContentType
-
+from django.views.decorators.http import require_http_methods
 from .forms import  TransportForm
 
 # Create your views here.
-
+@require_http_methods(["GET", "POST"])  # Sensitive
 def transportlist(request):
     transports = Transport.objects.all()
     context = {'transports':transports}
     return render(request, 'transports/transportlist.html', context)
 
 @login_required
-def transportForm(request):
+@require_http_methods(["GET", "POST"])  # Sensitive
+def transportform(request):
     if request.method == "POST":
         form = TransportForm(request.POST, request.FILES)
         print(request.FILES)
@@ -31,18 +32,20 @@ def transportForm(request):
         form = TransportForm()
     return render(request, "transports/transportform.html", {"form": form})
 
+@require_http_methods(["GET", "POST"])  # Sensitive
 def updatetransport_view(request, id):
     listing = Transport.objects.all().filter(id = id).first()
     if request.method == 'POST':
-        form = transportForm(request.POST, instance = listing)
+        form = TransportForm(request.POST, instance = listing)
         if form.is_valid():
             form.save()
             return redirect(usertransports_view)
     else:
-        form = transportForm(instance=listing)
+        form = TransportForm(instance=listing)
         return render(request, 'transports/updatetransport.html', {"form":form, "listing": listing})
     
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def deletetransport_view(request, id):
     listing = Transport.objects.all().filter(id = id).first()
     if request.method == 'POST':
@@ -51,17 +54,19 @@ def deletetransport_view(request, id):
        
     
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def usertransports_view(request):
     transports = Transport.objects.filter(created_by = request.user)
     context = {'transports':transports}
     return render(request, 'transports/usertransports.html', context)
 
 @login_required
+@require_http_methods(["GET", "POST"])  # Sensitive
 def transportdetail_view(request, id):
     if request.method == 'POST':
         transport = Transport.objects.get(id = id)
         quantity = int(request.POST.get('quantity'))
-        booking = Booking.objects.create(
+        Booking.objects.create(
             user = request.user,
             content_type=ContentType.objects.get_for_model(transport),
             object_id=transport.id,

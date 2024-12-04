@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.transportlist, name = "transportlist"),
-    path('transportform', views.transportForm, name = "transportform"),
+    path('transportform', views.transportform, name = "transportform"),
     path('transportlist/', views.transportlist, name = "transportlist"),
     path('usertransports/', views.usertransports_view, name = "usertransports"),
     path('updatetransport/<int:id>/', views.updatetransport_view, name = "updatetransport"),
