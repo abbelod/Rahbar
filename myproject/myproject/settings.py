@@ -23,6 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
 
+# API Keyds for Map and Weather
+RAPIDAPI_KEY = "3568a96814msh5b15e697fb06ef7p1bffe6jsn6095c0adf940"
+GOOGLE_MAPS_HOST = "google-map-places.p.rapidapi.com"
+OPEN_WEATHER_HOST = "open-weather13.p.rapidapi.com"
+
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -56,6 +63,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'chatbot',
     'groq',
+    'planner',
+    'real_time_update',
     
 ]
 

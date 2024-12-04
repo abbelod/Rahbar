@@ -31,6 +31,7 @@ urlpatterns = [
     path('flights/', include('flights.urls')),
     path('blogs/', include('blog.urls')),
     path('chatbot/', include('chatbot.urls')),
+     path('real_time_update/', include('real_time_update.urls')),
 
 ]
     

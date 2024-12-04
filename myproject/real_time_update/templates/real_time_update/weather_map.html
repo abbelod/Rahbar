@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Weather & Map</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <style>
+        /* Basic Reset and Body Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffb3c1, #f6a2d8);
+            color: #333;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Container holding weather and map */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Weather Info Section */
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 600px;
+            transition: transform 0.3s ease;
+        }
+
+        .weather-info:hover {
+            transform: translateY(-10px);
+        }
+
+        .weather-info img {
+            width: 80px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .weather-info h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .weather-info p {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #777;
+        }
+
+        .weather-info .temp {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 10px 0;
+            color: #ff5c8d;
+        }
+
+        /* Map Container */
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        /* Form Section */
+        .search-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .search-form input {
+            padding: 12px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-form button {
+            padding: 12px 25px;
+            background: #ff5c8d;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-form button:hover {
+            background: #ff3751;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply animation to all main sections */
+        .container, .weather-info, #map {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Weather Info Section -->
+        {% if weather %}
+        <div class="weather-info">
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather Icon">
+            <h2>Weather in {{ weather.city }}</h2>
+            <p>{{ weather.description | capfirst }}</p>
+            <div class="temp">{{ weather.temperature }}°C</div>
+        </div>
+        {% else %}
+        <div class="weather-info">
+            <p>Unable to fetch weather information.</p>
+        </div>
+        {% endif %}
+
+        <!-- Map -->
+        {% if geocode %}
+        <h2>Location on Map</h2>
+        <div id="map"></div>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script>
+            var map = L.map('map').setView([{{ geocode.latitude }}, {{ geocode.longitude }}], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            var marker = L.marker([{{ geocode.latitude }}, {{ geocode.longitude }}]).addTo(map)
+                .bindPopup("<b>{{ weather.city }}</b><br>{{ weather.description }}")
+                .openPopup();
+        </script>
+        {% else %}
+        <p>Unable to fetch location on the map.</p>
+        {% endif %}
+
+        <!-- Search Form to Update City -->
+        <div class="search-form">
+            <form method="get" action="{% url 'real_time_update' %}">
+                <input type="text" name="city" placeholder="Enter city name" value="{{ request.GET.city }}">
+                <button type="submit">Get Weather & Map</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

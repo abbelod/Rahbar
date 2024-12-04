@@ -186,23 +186,61 @@
                       <button onclick="window.location.href='{% url 'hotellist' %}'" class="bg-color-1 btn">Book Hotels</button>
                   </div>
               </div>
+            </div>
+              <!-- Real Time Card-->
+              <div class="col-md-4 mb-4">
+                <div class="card services-card hover-effect-1">
+                    <div class="card-img">
+                        <img class="rounded" src="{% static 'images/realtime.png' %}" alt="Real-Time Updates Image">
+                    </div>
+                    <div class="card-heading mt-1">
+                        <h2 class="poppins-medium dark-green-2">Real-Time Updates</h2>
+                    </div>
+                    <div class="card-text">
+                        Stay informed with live updates on traffic, weather, and bookings.
+                    </div>
+                    {% comment %} <div class="card-btn">
+                        <button onclick="window.location.href='{% url 'realtimeupdates' %}'" class="bg-color-1 btn">View Updates</button>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+            
+
+              <!-- Planner Card -->
+          <div class="col-md-4 mb-4">
+            <div class="card services-card hover-effect-1">
+              <div class="card-img">
+                <img class="rounded" src="{% static 'images/planner.jpg' %}" alt="Planner Image">
+              </div>
+              <div class="card-heading mt-1">
+                <h2 class="poppins-medium dark-green-2">Planner</h2>
+              </div>
+              <div class="card-text">
+                Plan your trip with our new itinerary planner.
+              </div>
+              <div class="card-btn">
+                <button onclick="window.location.href='{% url 'create_itinerary' %}'" class="bg-color-1 btn">Create Plan</button>
+              </div>
           </div>
+
+
+
       </div>
-     
   </div>
   </div>
 
 
-  
 
-  <!-- Call to Action Section -->
+
+
+  {% comment %} <!-- Call to Action Section -->
   <div class="cta-section text-center">
     <div class="container">
       <h2>Ready to Start Your Adventure?</h2>
       <p>Plan your trip now with our new itinerary planner!</p>
       <a href="{% url 'planner' %}" class="btn btn-light btn-lg">Get Started</a>
     </div>
-  </div>
+  </div> {% endcomment %}
 
   <div class="features-section">
     <div class="container">

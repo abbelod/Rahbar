@@ -780,3 +780,13 @@ input {
 .button-4:-webkit-details-marker {
   display: none;
 }
+
+
+input[type="date"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
