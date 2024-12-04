@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Itinerary</title>
+    {% load static %}
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <style>
+        /* Sidebar Styling */
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0 15px 15px 0;
+            transition: 0.3s ease-in-out;
+        }
+
+        .sidebar:hover {
+            transform: translateX(10px);
+        }
+
+        .sidebar h3 {
+            color: #004a40;
+            font-weight: 600;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            display: block;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #99f2c8;
+            color: #007bff;
+            border-radius: 5px;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 30px;
+            background: #f0f4f8;
+            min-height: 100vh;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+        }
+
+        /* Form Styling */
+        .form-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: linear-gradient(135deg, #e0fbfc, #99f2c8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-container h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #004a40;
+        }
+
+        .form-container .form-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-container .form-control {
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+
+        .form-container .form-control:focus {
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+            border-color: #007bff;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Input Field Focus Effect */
+        .form-container .form-control:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 10px rgba(0, 86, 179, 0.2);
+        }
+
+        .form-container .mb-3 {
+            margin-bottom: 25px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h3>Planner Dashboard</h3>
+    <a href="#">Home</a>
+    <a href="#">Itineraries</a>
+    <a href="#">Add Attractions</a>
+    <a href="#">Add Routes</a>
+    <a href="#">Travel Routes</a>
+</div>
+
+<div class="content">
+    <div class="form-container">
+        <h1>Create a New Itinerary</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ itinerary_form.non_field_errors }}
+            <div class="mb-3">
+                <label for="{{ itinerary_form.name.id_for_label }}" class="form-label">Itinerary Name</label>
+                {{ itinerary_form.name }}
+            </div>
+            <div class="mb-3">
+                <label for="{{ itinerary_form.start_date.id_for_label }}" class="form-label">Start Date</label>
+                {{ itinerary_form.start_date }}
+            </div>
+            <div class="mb-3">
+                <label for="{{ itinerary_form.end_date.id_for_label }}" class="form-label">End Date</label>
+                {{ itinerary_form.end_date }}
+            </div>
+            <button type="submit" class="btn btn-primary">Create Itinerary</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
